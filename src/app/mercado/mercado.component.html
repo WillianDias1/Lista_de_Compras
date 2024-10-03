@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Adicionar Produto</h2>
+  <form (ngSubmit)="addItem()" class="product-form">
+    <label for="name">Nome:</label>
+    <input id="name" type="text" [(ngModel)]="newItem.name" name="name" required />
+
+    <label for="imageFile">Imagem do Produto:</label>
+    <input id="imageFile" type="file" (change)="onFileSelected($event)" name="imageFile" accept="image/*" required />
+
+    <label for="price">Preço:</label>
+    <input id="price" type="number" [(ngModel)]="newItem.price" name="price" required />
+
+    <label for="description">Descrição:</label>
+    <textarea id="description" [(ngModel)]="newItem.description" name="description" required></textarea>
+
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <!-- Exibir pré-visualização da imagem, se houver -->
+  <div *ngIf="newItem.imagePreview">
+    <h4>Pré-visualização da Imagem:</h4>
+    <img [src]="newItem.imagePreview" alt="Imagem do Produto" width="100">
+  </div>
+
+  <h2>Lista de Produtos</h2>
+  <div class="product-list">
+    <div *ngFor="let item of items" class="product-item">
+      <h3>{{ item.name }}</h3>
+      <img [src]="item.imagePreview" alt="{{ item.name }}" width="100" />
+      <p>Preço: {{ item.price | currency }}</p>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+</div>

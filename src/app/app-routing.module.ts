@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ItemListComponent } from './item-list-component/item-list-component.component';
-import { ItemFormComponent } from './item-form-component/item-form-component.component';
+import { MercadoComponent } from './mercado/mercado.component';
 import { ItemComponent } from './item-component/item-component.component';
 
 export const routes: Routes = [
@@ -13,10 +13,8 @@ export const routes: Routes = [
   { path: 'items', component: ItemListComponent },
 
   // Rota para o formulário de adição de itens
-  { path: 'add-item', component: ItemFormComponent },
+  { path: 'mercado', component: MercadoComponent  },
 
-  // Rota para a edição de um item (usando parâmetro id)
-  { path: 'edit-item/:id', component: ItemFormComponent }
 ];
 
 @NgModule({

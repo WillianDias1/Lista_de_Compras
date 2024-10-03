@@ -8,8 +8,8 @@ import { ItemListComponent } from './item-list-component/item-list-component.com
 import { HeaderComponentComponent } from './header-component/header-component.component';
 import { GroupComponentComponent } from './group-component/group-component.component';
 import { FooterComponentComponent } from './footer-component/footer-component.component';
-import { ItemFormComponent } from './item-form-component/item-form-component.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importando os módulos de formulários
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MercadoComponent } from './mercado/mercado.component'; // Importando os módulos de formulários
 
 
 @NgModule({
@@ -19,8 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importando
     GroupComponentComponent,
     FooterComponentComponent,
     ItemListComponent,
-    ItemComponent, // Declarando o ItemComponent
-    ItemFormComponent // Declarando o ItemFormComponent
+    ItemComponent,
+    MercadoComponent
   ],
   imports: [
     BrowserModule,

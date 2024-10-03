@@ -1,0 +1,30 @@
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-form input, .product-form textarea {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.product-list {
+  margin-top: 20px;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.product-item img {
+  display: block;
+  margin-bottom: 10px;
+}
