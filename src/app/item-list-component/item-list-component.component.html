@@ -1,0 +1,31 @@
+<div class="item-list-container">
+  <!-- Campo para adicionar um novo item -->
+  <input #newItemInput type="text" placeholder="Adicione um item" class="item-input" />
+  <button (click)="addItem(newItemInput.value); newItemInput.value=''" class="add-btn">Adicionar</button>
+
+  <!-- Itens não comprados -->
+  <h3>Itens a Comprar</h3>
+  <div *ngIf="getUnboughtItems().length > 0">
+    <app-item
+      *ngFor="let item of getUnboughtItems()"
+      [item]="item"
+      (deleteItem)="onDeleteItem(item)"
+      (markAsBought)="onMarkAsBought(item)"
+      (markAsUnBought)="onMarkAsBought(item)">
+    </app-item>
+  </div>
+  <p *ngIf="getUnboughtItems().length === 0">Nenhum item a comprar.</p>
+
+  <!-- Itens comprados -->
+  <h3>Itens Comprados</h3>
+  <div *ngIf="getBoughtItems().length > 0">
+    <app-item
+      *ngFor="let item of getBoughtItems()"
+      [item]="item"
+      (deleteItem)="onDeleteItem(item)"
+      (markAsBought)="onMarkAsBought(item)"
+      (markAsUnBought)="onMarkAsBought(item)">
+    </app-item>
+  </div>
+  <p *ngIf="getBoughtItems().length === 0">Nenhum item comprado.</p>
+</div>

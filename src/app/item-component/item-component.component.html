@@ -1,0 +1,23 @@
+<div class="item-container" [ngClass]="{'bought': item.isBought}">
+  <!-- Verifica se está em modo de edição -->
+  <div *ngIf="isEditing">
+    <input [(ngModel)]="editedValue" type="text" class="edit-input" />
+    <button (click)="saveEdit()" class="save-btn">Salvar</button>
+  </div>
+
+  <!-- Modo de exibição normal -->
+  <div *ngIf="!isEditing">
+    <span [class.bought]="item.isBought">{{ item.name }}</span>
+    <button (click)="toggleEdit()" class="edit-btn">Editar</button>
+
+    <!-- Botão condicional para Marcar como Comprado ou Descomprado -->
+    <button
+      (click)="item.isBought ? markUnBought() : markBought()"
+      class="bought-btn">
+      {{ item.isBought ? 'Marcar como Descomprado' : 'Marcar como Comprado' }}
+    </button>
+
+    <button (click)="delete()" class="delete-btn">Excluir</button>
+  </div>
+</div>
+

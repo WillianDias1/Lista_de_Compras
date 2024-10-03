@@ -1,0 +1,24 @@
+.item-list-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.item-input {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.add-btn {
+  padding: 10px;
+  cursor: pointer;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #333;
+}

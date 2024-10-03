@@ -1,0 +1,16 @@
+<form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+  <input
+    formControlName="name"
+    type="text"
+    class="item-input"
+    placeholder="Digite o nome do item"
+  />
+  <button type="submit" [disabled]="itemForm.invalid" class="submit-btn">
+    {{ item ? 'Salvar Alterações' : 'Adicionar Item' }}
+  </button>
+</form>
+
+<!-- Mensagem de erro quando o formulário for inválido -->
+<div *ngIf="itemForm.get('name')?.invalid && itemForm.get('name')?.touched" class="error">
+  O nome do item é obrigatório.
+</div>
