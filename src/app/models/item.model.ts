@@ -1,3 +1,5 @@
+import internal from "node:stream";
+
 export interface Item {
   id: number;
   name: string;
@@ -5,5 +7,6 @@ export interface Item {
   price: number;
   description: string;
   imagePreview: string;    // Previsualização da imagem
-  purchased: boolean;
+  quantity: number;
+
 }

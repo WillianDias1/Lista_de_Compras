@@ -44,3 +44,15 @@ button i {
   font-size: 1.5em;
   color: #0090CF; /* Cor do ícone de exclusão */
 }
+
+.cart-list, .product-list {
+  margin-top: 20px;
+}
+
+.cart-item, .product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+

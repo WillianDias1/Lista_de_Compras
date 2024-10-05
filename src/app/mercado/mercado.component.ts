@@ -14,14 +14,15 @@ export class MercadoComponent {
     price: 0,
     description: '',
     imagePreview: '',
-    purchased: false
+    quantity: 1 // Novo campo para quantidade
   };
 
   items: Item[] = [];
+  cartItems: Item[] = []; // Array para armazenar os itens do carrinho
 
-  // Função para adicionar o item à lista
+  // Adicionar o item à lista
   addItem() {
-    if (this.newItem.name && this.newItem.imageFile && this.newItem.price > 0 && this.newItem.description) {
+    if (this.newItem.name && this.newItem.imageFile && this.newItem.price > 0 && this.newItem.description && this.newItem.quantity > 0) {
       this.newItem.id = this.items.length + 1;
       this.items.push({ ...this.newItem });
       this.clearForm();
@@ -30,30 +31,25 @@ export class MercadoComponent {
     }
   }
 
-  // Obter itens não comprados
-  getUnpurchasedItems(): Item[] {
-    return this.items.filter(item => !item.purchased);
-  }
-
-  // Obter itens comprados
-  getPurchasedItems(): Item[] {
-    return this.items.filter(item => item.purchased);
-  }
-
-  // Alterar o status de "comprado" do item
-  togglePurchased(item: Item) {
-    item.purchased = !item.purchased;
-  }
-
   // Editar o item
   editItem(item: Item) {
     this.newItem = { ...item };
-    this.removeItem(item);  // Remove o item da lista enquanto é editado
+    this.removeItem(item); // Remove o item da lista enquanto é editado
   }
 
   // Excluir o item da lista
   removeItem(item: Item) {
     this.items = this.items.filter(i => i.id !== item.id);
+  }
+
+  // Adicionar item ao carrinho
+  addToCart(item: Item) {
+    const existingItem = this.cartItems.find(cartItem => cartItem.id === item.id);
+    if (existingItem) {
+      existingItem.quantity += item.quantity; // Incrementa a quantidade se já estiver no carrinho
+    } else {
+      this.cartItems.push({ ...item });
+    }
   }
 
   // Processar o arquivo de imagem e gerar a previsualização
@@ -79,7 +75,13 @@ export class MercadoComponent {
       price: 0,
       description: '',
       imagePreview: '',
-      purchased: false
+      quantity: 1 // Reiniciar quantidade ao limpar o formulário
     };
   }
+
+  // Excluir item do carrinho
+  removeFromCart(cartItem: Item) {
+    this.cartItems = this.cartItems.filter(item => item.id !== cartItem.id);
+  }
+
 }
