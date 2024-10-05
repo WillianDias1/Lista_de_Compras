@@ -1,58 +1,97 @@
 .container {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.product-form {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+  margin: 20px; /* Margem geral da container */
 }
 
-.product-form input, .product-form textarea {
-  padding: 8px;
-  font-size: 1rem;
+.market-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Espaçamento entre as colunas */
 }
 
-.product-list {
-  margin-top: 20px;
+.column {
+  flex: 1; /* Cada coluna ocupará o mesmo espaço */
+  padding: 20px;
+  border: 1px solid #ddd; /* Borda leve em torno das colunas */
+  border-radius: 8px; /* Cantos arredondados */
+  background-color: #fff; /* Fundo branco */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  margin: 20px; /* Aumenta a margem entre as colunas */
 }
 
-.product-item {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
+h2 {
+  color: #333; /* Cor do título */
+  font-size: 1.8em; /* Aumentar o tamanho do título */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  text-align: center; /* Centraliza o título */
 }
 
-.product-item img {
-  display: block;
-  margin-bottom: 10px;
+.product-item, .cart-item {
+  margin-bottom: 15px;
+  padding: 15px; /* Aumenta o padding interno */
+  border: 1px solid #f0f0f0; /* Borda leve para produtos */
+  border-radius: 5px; /* Cantos arredondados */
+  transition: transform 0.2s; /* Animação ao passar o mouse */
+  background-color: #f9f9f9; /* Cor de fundo dos produtos */
 }
 
-.purchased {
-  text-decoration: line-through;
-  color: #777;
+.product-item:hover, .cart-item:hover {
+  transform: scale(1.02); /* Efeito de zoom ao passar o mouse */
 }
 
 button {
-  background-color: transparent;
+  margin-top: 10px; /* Margem para botões */
+  padding: 15px 30px; /* Aumenta o padding para mais espaço */
   border: none;
+  border-radius: 5px;
+  background-color: #0090CF; /* Cor de fundo dos botões */
+  color: white; /* Cor do texto */
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Transição de cor e escala ao passar o mouse */
+  display: block; /* Faz o botão ocupar a largura total disponível */
+  width: 100%; /* Define a largura total do botão */
+  font-size: 1.1em; /* Aumenta o tamanho da fonte do botão */
+  text-align: center; /* Centraliza o texto no botão */
 }
 
-button i {
-  font-size: 1.5em;
-  color: #0090CF; /* Cor do ícone de exclusão */
+button:hover {
+  background-color: #007bb5; /* Cor mais escura ao passar o mouse */
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
 }
 
-.cart-list, .product-list {
-  margin-top: 20px;
+.form-group {
+  margin-bottom: 20px; /* Espaçamento entre os grupos de formulário */
 }
 
-.cart-item, .product-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+label {
+  font-weight: bold; /* Negrito para labels */
+  margin-bottom: 5px; /* Espaço abaixo das labels */
+  display: block; /* Cada label em uma linha */
 }
 
+input, textarea {
+  width: 100%; /* Largura total para inputs e textarea */
+  padding: 10px; /* Padding interno */
+  border: 1px solid #ddd; /* Borda leve */
+  border-radius: 5px; /* Cantos arredondados */
+  transition: border-color 0.3s; /* Transição para mudança de cor */
+}
+
+input:focus, textarea:focus {
+  border-color: #0090CF; /* Cor da borda ao focar */
+  outline: none; /* Remove o contorno padrão */
+}
+
+.image-preview {
+  margin-top: 10px; /* Margem para a pré-visualização da imagem */
+  text-align: center; /* Centraliza a imagem */
+}
+
+.image-preview img {
+  width: 300px; /* Ajuste para um tamanho fixo */
+  height: auto; /* Mantém a proporção da imagem */
+  border: 1px solid #ddd; /* Borda leve na imagem */
+  border-radius: 5px; /* Cantos arredondados da imagem */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve na imagem */
+}

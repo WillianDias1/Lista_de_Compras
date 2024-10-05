@@ -1,51 +1,69 @@
-<div class="container">
-  <h2>Adicionar Produto</h2>
-  <form (ngSubmit)="addItem()" class="product-form">
-    <label for="name">Nome:</label>
-    <input id="name" type="text" [(ngModel)]="newItem.name" name="name" required />
+<div class="container market-layout">
+  <!-- Coluna Adicionar Produto -->
+  <div class="column add-product">
+    <h2>Adicionar Produto</h2>
+    <form (ngSubmit)="addItem()" class="product-form">
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input id="name" type="text" [(ngModel)]="newItem.name" name="name" required />
+      </div>
 
-    <label for="imageFile">Imagem do Produto:</label>
-    <input id="imageFile" type="file" (change)="onFileSelected($event)" name="imageFile" accept="image/*" required />
+      <div class="form-group">
+        <label for="imageFile">Imagem do Produto:</label>
+        <input id="imageFile" type="file" (change)="onFileSelected($event)" name="imageFile" accept="image/*" required />
+        <div *ngIf="newItem.imagePreview" class="image-preview">
+          <img [src]="newItem.imagePreview" alt="Imagem do Produto" />
+        </div>
+      </div>
 
-    <label for="price">Preço:</label>
-    <input id="price" type="number" [(ngModel)]="newItem.price" name="price" required />
+      <div class="form-group">
+        <label for="price">Preço:</label>
+        <input id="price" type="number" [(ngModel)]="newItem.price" name="price" required />
+      </div>
 
-    <label for="description">Descrição:</label>
-    <textarea id="description" [(ngModel)]="newItem.description" name="description" required></textarea>
+      <div class="form-group">
+        <label for="description">Descrição:</label>
+        <textarea id="description" [(ngModel)]="newItem.description" name="description" required></textarea>
+      </div>
 
-    <label for="quantity">Quantidade:</label>
-    <input id="quantity" type="number" [(ngModel)]="newItem.quantity" name="quantity" min="1" required />
+      <div class="form-group">
+        <label for="quantity">Quantidade:</label>
+        <input id="quantity" type="number" [(ngModel)]="newItem.quantity" name="quantity" min="1" required />
+      </div>
 
-    <button type="submit">Adicionar</button>
-  </form>
-
-  <div *ngIf="newItem.imagePreview">
-    <h4>Pré-visualização da Imagem:</h4>
-    <img [src]="newItem.imagePreview" alt="Imagem do Produto" width="100">
+      <button type="submit">Adicionar</button>
+    </form>
   </div>
 
-  <h2>Lista de Produtos</h2>
-  <div class="product-list">
-    <div *ngFor="let item of items" class="product-item">
-      <h3>{{ item.name }}</h3>
-      <img [src]="item.imagePreview" alt="{{ item.name }}" width="100" />
-      <p>Preço: {{ item.price | currency }}</p>
-      <p>{{ item.description }}</p>
-      <p>Quantidade: {{ item.quantity }}</p>
+  <!-- Coluna Lista de Produtos -->
+  <div class="column product-list">
+    <h2>Lista de Produtos</h2>
+    <div class="product-list">
+      <div *ngFor="let item of items" class="product-item">
+        <h3>{{ item.name }}</h3>
+        <img [src]="item.imagePreview" alt="{{ item.name }}" width="100" />
+        <p>Preço: {{ item.price | currency }}</p>
+        <p>{{ item.description }}</p>
+        <p>Quantidade: {{ item.quantity }}</p>
 
-      <button (click)="editItem(item)">Editar</button>
-      <button (click)="removeItem(item)"><i class="fa fa-trash"></i></button>
-      <button (click)="addToCart(item)">Adicionar ao Carrinho</button>
+        <button (click)="editItem(item)">Editar</button>
+        <button (click)="removeItem(item)"><i class="fa fa-trash"></i></button>
+        <button (click)="addToCart(item)">Adicionar ao Carrinho</button>
+      </div>
     </div>
   </div>
 
-  <h2>Carrinho de Compras</h2>
-  <div class="cart-list">
-   <div *ngFor="let cartItem of cartItems" class="cart-item">
-      <h3>{{ cartItem.name }}</h3>
-      <p>Preço: {{ cartItem.price | currency }}</p>
-      <p>Quantidade: {{ cartItem.quantity }}</p>
-      <button (click)="removeFromCart(cartItem)">Excluir</button> <!-- Botão para excluir -->
+  <!-- Coluna Carrinho de Compras -->
+  <div class="column cart">
+    <h2>Carrinho de Compras</h2>
+    <div class="cart-list">
+      <div *ngFor="let cartItem of cartItems" class="cart-item">
+        <h3>{{ cartItem.name }}</h3>
+        <p>Preço: {{ cartItem.price | currency }}</p>
+        <p>Quantidade: {{ cartItem.quantity }}</p>
+        <button (click)="removeFromCart(cartItem)">Excluir</button>
+        <button (click)="purchaseItems(cartItem)">Comprar</button>
+      </div>
     </div>
   </div>
 </div>

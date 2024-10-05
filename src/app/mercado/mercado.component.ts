@@ -51,6 +51,21 @@ export class MercadoComponent {
       this.cartItems.push({ ...item });
     }
   }
+// Método para comprar item individualmente
+purchaseItems(cartItem: Item) {
+  if (!cartItem) {
+    alert('Selecione um item para comprar!');
+    return;
+  }
+
+  // Aqui você pode adicionar a lógica para processar o pagamento ou finalização da compra
+  // Por exemplo, você pode chamar um serviço que faz a requisição para o backend
+  alert(`Compra do item ${cartItem.name} realizada com sucesso!`);
+
+  // Remover o item do carrinho após a compra
+  this.removeFromCart(cartItem);
+}
+
 
   // Processar o arquivo de imagem e gerar a previsualização
   onFileSelected(event: any) {
