@@ -5,4 +5,5 @@ export interface Item {
   price: number;
   description: string;
   imagePreview: string;    // Previsualização da imagem
+  purchased: boolean;
 }

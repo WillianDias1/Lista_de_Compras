@@ -13,7 +13,8 @@ export class MercadoComponent {
     imageFile: null,
     price: 0,
     description: '',
-    imagePreview: ''
+    imagePreview: '',
+    purchased: false
   };
 
   items: Item[] = [];
@@ -29,6 +30,32 @@ export class MercadoComponent {
     }
   }
 
+  // Obter itens não comprados
+  getUnpurchasedItems(): Item[] {
+    return this.items.filter(item => !item.purchased);
+  }
+
+  // Obter itens comprados
+  getPurchasedItems(): Item[] {
+    return this.items.filter(item => item.purchased);
+  }
+
+  // Alterar o status de "comprado" do item
+  togglePurchased(item: Item) {
+    item.purchased = !item.purchased;
+  }
+
+  // Editar o item
+  editItem(item: Item) {
+    this.newItem = { ...item };
+    this.removeItem(item);  // Remove o item da lista enquanto é editado
+  }
+
+  // Excluir o item da lista
+  removeItem(item: Item) {
+    this.items = this.items.filter(i => i.id !== item.id);
+  }
+
   // Processar o arquivo de imagem e gerar a previsualização
   onFileSelected(event: any) {
     const file = event.target.files[0];
@@ -37,7 +64,7 @@ export class MercadoComponent {
 
       const reader = new FileReader();
       reader.onload = () => {
-        this.newItem.imagePreview = reader.result as string;  // Exibir a imagem como string base64
+        this.newItem.imagePreview = reader.result as string;
       };
       reader.readAsDataURL(file);
     }
@@ -51,7 +78,8 @@ export class MercadoComponent {
       imageFile: null,
       price: 0,
       description: '',
-      imagePreview: ''
+      imagePreview: '',
+      purchased: false
     };
   }
 }

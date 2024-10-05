@@ -16,19 +16,37 @@
     <button type="submit">Adicionar</button>
   </form>
 
-  <!-- Exibir pré-visualização da imagem, se houver -->
   <div *ngIf="newItem.imagePreview">
     <h4>Pré-visualização da Imagem:</h4>
     <img [src]="newItem.imagePreview" alt="Imagem do Produto" width="100">
   </div>
 
-  <h2>Lista de Produtos</h2>
-  <div class="product-list">
-    <div *ngFor="let item of items" class="product-item">
-      <h3>{{ item.name }}</h3>
-      <img [src]="item.imagePreview" alt="{{ item.name }}" width="100" />
-      <p>Preço: {{ item.price | currency }}</p>
-      <p>{{ item.description }}</p>
-    </div>
+  <h2>Produtos Não Comprados</h2>
+<div class="product-list" *ngFor="let item of getUnpurchasedItems()">
+  <div class="product-item">
+    <input type="checkbox" (change)="togglePurchased(item)" />
+    <h3 [ngClass]="{ 'purchased': item.purchased }">{{ item.name }}</h3>
+    <img [src]="item.imagePreview" alt="{{ item.name }}" width="100" />
+    <p>Preço: {{ item.price | currency }}</p>
+    <p>{{ item.description }}</p>
+
+    <button (click)="editItem(item)">Editar</button>
+    <button (click)="removeItem(item)"><i class="fa fa-trash"></i></button>
   </div>
+</div>
+
+<h2>Produtos Comprados</h2>
+<div class="product-list" *ngFor="let item of getPurchasedItems()">
+  <div class="product-item">
+    <input type="checkbox" checked (change)="togglePurchased(item)" />
+    <h3 class="purchased">{{ item.name }}</h3>
+    <img [src]="item.imagePreview" alt="{{ item.name }}" width="100" />
+    <p>Preço: {{ item.price | currency }}</p>
+    <p>{{ item.description }}</p>
+
+    <button (click)="editItem(item)">Editar</button>
+    <button (click)="removeItem(item)"><i class="fa fa-trash"></i></button>
+  </div>
+</div>
+
 </div>

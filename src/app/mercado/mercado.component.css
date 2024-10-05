@@ -28,3 +28,19 @@
   display: block;
   margin-bottom: 10px;
 }
+
+.purchased {
+  text-decoration: line-through;
+  color: #777;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+button i {
+  font-size: 1.5em;
+  color: #0090CF; /* Cor do ícone de exclusão */
+}
