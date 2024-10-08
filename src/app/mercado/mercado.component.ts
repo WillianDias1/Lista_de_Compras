@@ -14,11 +14,12 @@ export class MercadoComponent {
     price: 0,
     description: '',
     imagePreview: '',
-    quantity: 1 // Novo campo para quantidade
+    quantity: 1
   };
 
   items: Item[] = [];
   cartItems: Item[] = []; // Array para armazenar os itens do carrinho
+  purchasedItems: Item[] = []; // Array para armazenar os itens comprados
 
   // Adicionar o item à lista
   addItem() {
@@ -51,21 +52,31 @@ export class MercadoComponent {
       this.cartItems.push({ ...item });
     }
   }
-// Método para comprar item individualmente
-purchaseItems(cartItem: Item) {
-  if (!cartItem) {
-    alert('Selecione um item para comprar!');
-    return;
+
+  // Método para comprar item individualmente
+  purchaseItems(cartItem: Item) {
+    if (!cartItem) {
+      alert('Selecione um item para comprar!');
+      return;
+    }
+
+    // Lógica para processar o pagamento ou finalização da compra
+    alert(`Compra do item ${cartItem.name} realizada com sucesso!`);
+
+    // Mover o item do carrinho para os itens comprados
+    this.purchasedItems.push({ ...cartItem });
+    this.removeFromCart(cartItem);
   }
 
-  // Aqui você pode adicionar a lógica para processar o pagamento ou finalização da compra
-  // Por exemplo, você pode chamar um serviço que faz a requisição para o backend
-  alert(`Compra do item ${cartItem.name} realizada com sucesso!`);
+  // Excluir item do carrinho
+  removeFromCart(cartItem: Item) {
+    this.cartItems = this.cartItems.filter(item => item.id !== cartItem.id);
+  }
 
-  // Remover o item do carrinho após a compra
-  this.removeFromCart(cartItem);
-}
-
+  // Excluir item da lista de comprados
+  removePurchasedItem(purchasedItem: Item) {
+    this.purchasedItems = this.purchasedItems.filter(item => item.id !== purchasedItem.id);
+  }
 
   // Processar o arquivo de imagem e gerar a previsualização
   onFileSelected(event: any) {
@@ -90,13 +101,7 @@ purchaseItems(cartItem: Item) {
       price: 0,
       description: '',
       imagePreview: '',
-      quantity: 1 // Reiniciar quantidade ao limpar o formulário
+      quantity: 1
     };
   }
-
-  // Excluir item do carrinho
-  removeFromCart(cartItem: Item) {
-    this.cartItems = this.cartItems.filter(item => item.id !== cartItem.id);
-  }
-
 }

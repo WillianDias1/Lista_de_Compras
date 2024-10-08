@@ -66,4 +66,17 @@
       </div>
     </div>
   </div>
+
+  <!-- Nova Coluna Itens Comprados -->
+  <div class="column purchased-items">
+    <h2>Itens Comprados</h2>
+    <div class="purchased-list">
+      <div *ngFor="let purchasedItem of purchasedItems" class="purchased-item">
+        <h3>{{ purchasedItem.name }}</h3>
+        <p>Preço: {{ purchasedItem.price | currency }}</p>
+        <p>Quantidade: {{ purchasedItem.quantity }}</p>
+        <button (click)="removePurchasedItem(purchasedItem)">Remover</button>
+      </div>
+    </div>
+  </div>
 </div>
