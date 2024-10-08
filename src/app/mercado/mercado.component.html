@@ -42,7 +42,7 @@
       <div *ngFor="let item of items" class="product-item">
         <h3>{{ item.name }}</h3>
         <img [src]="item.imagePreview" alt="{{ item.name }}" width="100" />
-        <p>Preço: {{ item.price | currency }}</p>
+        <p>Preço: R{{ item.price | currency }}</p>
         <p>{{ item.description }}</p>
         <p>Quantidade: {{ item.quantity }}</p>
 
@@ -59,7 +59,7 @@
     <div class="cart-list">
       <div *ngFor="let cartItem of cartItems" class="cart-item">
         <h3>{{ cartItem.name }}</h3>
-        <p>Preço: {{ cartItem.price | currency }}</p>
+        <p>Preço: R{{ cartItem.price | currency }}</p>
         <p>Quantidade: {{ cartItem.quantity }}</p>
         <button (click)="removeFromCart(cartItem)">Excluir</button>
         <button (click)="purchaseItems(cartItem)">Comprar</button>
@@ -73,7 +73,7 @@
     <div class="purchased-list">
       <div *ngFor="let purchasedItem of purchasedItems" class="purchased-item">
         <h3>{{ purchasedItem.name }}</h3>
-        <p>Preço: {{ purchasedItem.price | currency }}</p>
+        <p>Preço: R{{ purchasedItem.price | currency }}</p>
         <p>Quantidade: {{ purchasedItem.quantity }}</p>
         <button (click)="removePurchasedItem(purchasedItem)">Remover</button>
       </div>

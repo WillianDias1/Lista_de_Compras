@@ -1,0 +1,91 @@
+/* Estilos gerais do header */
+.main-header {
+  width: 100%;
+  background-color: #0090CF; /* Cor de fundo do header */
+  padding: 15px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave no header */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Mantém o header acima do conteúdo ao rolar a página */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* Permite que o conteúdo se reorganize em telas menores */
+}
+
+.logo {
+  color: white;
+  font-size: 2.2em; /* Tamanho da logo */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-bar ul {
+  list-style-type: none; /* Remove marcadores da lista */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px; /* Espaçamento entre os links */
+}
+
+.nav-bar ul li {
+  margin: 0;
+}
+
+.nav-bar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.nav-bar ul li a:hover {
+  color: #f0f0f0; /* Cor mais clara ao passar o mouse */
+}
+
+/* Esconde o menu por padrão em dispositivos móveis */
+.menu-toggle {
+  display: none;
+  background-color: transparent;
+  border: none;
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-toggle:focus {
+  outline: none; /* Remove o contorno ao focar */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .nav-bar ul {
+    flex-direction: column; /* Empilha os links do menu */
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #0090CF;
+    width: 100%;
+    display: none; /* Esconde o menu por padrão */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-bar ul.active {
+    display: flex; /* Exibe o menu ao clicar no ícone de menu */
+    flex-direction: column;
+  }
+
+  .menu-toggle {
+    display: block; /* Mostra o ícone de menu em dispositivos móveis */
+  }
+
+  .logo {
+    font-size: 1.1em;
+  }
+}
