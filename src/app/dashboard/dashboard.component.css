@@ -7,11 +7,13 @@ body {
 h3, p, label, input, textarea {
   font-family: "Rubik", sans-serif;
   font-weight: 300; /* Peso normal para textos padrão */
+
 }
 
 h2 {
   font-family: "Rubik", sans-serif;
   font-weight: 500; /* Peso mais pesado para títulos, se desejar */
+  
 }
 
 button {
