@@ -25,3 +25,4 @@ Tela de Login com OAuth 2.0 usando Google
 Este projeto também inclui uma tela de login utilizando OAuth 2.0, com integração ao Google, visando demonstrar a implementação básica de autenticação e autorização.
 
 Objetivo: Aprender os conceitos fundamentais de autenticação com OAuth 2.0, configurar um cliente OAuth do Google e implementar a funcionalidade de login em uma aplicação web.
+# Lista
